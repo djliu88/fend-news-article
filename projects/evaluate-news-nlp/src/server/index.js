@@ -1,8 +1,16 @@
 var path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
+const dotenv = require('dotenv')
 
 const app = express()
+
+dotenv.config()
+var textapi = new meaningCloud ({
+    application_key: process.env.API_KEY
+})
+
+console.log(`Your API key is ${process.env.API_KEY}`)
 
 app.use(express.static('dist'))
 
